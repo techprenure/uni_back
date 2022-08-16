@@ -12,6 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+const DepartmentRouter = require('./src/router/DepartmentRouter');
+const FacultyRouter = require('./src/router/FacultyRouter');
+
 //Load static files
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -53,6 +56,8 @@ if (process.env.NODE_ENV === 'development') {
   }
 
   // Base route Routes
+  app.use('/department', DepartmentRouter)
+  app.use('/faculty', FacultyRouter)
 
   app.use('*', (req, res, next) => {
     next(new ErrorHandler(`Can't resolve ${req.originalUrl}`, false, 'e500'))
