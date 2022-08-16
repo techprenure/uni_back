@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// Handles sync unhandle exception
+// Handles sync unhandle exceptions
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION');
   console.log('App shotting down...');
